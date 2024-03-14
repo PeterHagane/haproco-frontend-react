@@ -1,0 +1,89 @@
+:root {
+--background-gradient:  linear-gradient(360deg, rgba(30,26,101,1) 0%, rgba(29,29,129,1) 55%, rgba(19,69,131,1) 100%);
+}
+
+body {
+  height: 100%;
+}
+
+
+#root {
+  height: 100vh;
+}
+
+.pageContainer{
+    height: 100vh;
+    // background-color: rgb(181, 229, 255);
+    background-color: var(--background);
+    display: flex;
+    
+}
+
+.pageHeader{
+    height: 100px;
+    border-bottom: 1px solid var(--foreground);
+    background-color: var(--midground);
+    display: flex;
+    
+}
+
+.pageContent{
+    height: calc(100vh - 200px);
+    background: var(--background);
+    display: flex;
+}
+
+.pageLeftMenu{
+    width: 200px;
+    height: calc(100%);
+    background: var(--background-dark);
+    display: flex;
+}
+
+.pageFooter{
+    height: 100px;
+    background-color: var(--midground);
+    border-top: 1px solid var(--foreground);
+    padding-left: 20px;
+    // padding-: 20px;
+    gap: 10px;
+}
+
+.pageComponent{
+    height: calc(100%); //viewheight minus footer and header
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+  }
+  
+.column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.row {
+    display: flex;
+    flex-direction: row;
+  }
+
+.center {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  
+.start {
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+  
+.alignCenter {
+    align-items: center;
+  }
+
+.options{
+  margin-left: auto;
+  margin-right: 5px;
+}

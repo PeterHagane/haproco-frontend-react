@@ -1,0 +1,1 @@
+import{j as t,c as r,O as o}from"./index-m0enWGuC.js";const s=({children:e})=>t.jsx("div",{children:e}),c=r("/dashboard")({component:a});function a(){return t.jsx(t.Fragment,{children:t.jsx(s,{children:t.jsx(o,{})})})}export{c as Route};

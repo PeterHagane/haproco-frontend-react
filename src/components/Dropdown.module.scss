@@ -1,0 +1,28 @@
+.listBox{
+    padding: 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    // padding: 6px;
+    // margin: 12px 0;
+    min-width: 200px;
+    // border-radius: 12px;
+    overflow: auto;
+    background-color: var(--surface-contrast);
+    // filter: drop-shadow(5px 5px 10px #000000);
+    cursor: pointer;
+    
+    
+
+    >li{
+        padding: 8px;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        transition: 0.1s;
+        border-radius: 5px;
+    
+        &:hover{
+            background-color: hsla(var(--primary), 0.2);
+        }    
+    }
+}

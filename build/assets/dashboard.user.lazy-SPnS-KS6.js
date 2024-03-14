@@ -1,0 +1,1 @@
+import{c as r,j as e}from"./index-m0enWGuC.js";const s=r("/dashboard/user")({component:t});function t(){return e.jsx(e.Fragment,{children:e.jsx(e.Fragment,{children:"dashboard/user"})})}export{s as Route};
