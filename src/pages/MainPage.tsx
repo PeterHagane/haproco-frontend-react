@@ -20,7 +20,7 @@ export const MainPage = ({
 
     const { data, error } = useQuery({ queryKey: ['allWeatherForecasts'], queryFn: getAllWeatherForecasts })
 
-
+    console.log(data)
 
     return <div className={cx(
         css.mainPage,
@@ -30,8 +30,8 @@ export const MainPage = ({
         {children}
         asdads
 
-        {data && data?.map((f)=>{
-            return <>{f.summary}</>
+        {data && data?.map((f, i)=>{
+            return <div key={f.summary + i}>{f.summary}</div>
         })}
 
         {error && <>{error.message}</>}

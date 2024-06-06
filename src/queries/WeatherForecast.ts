@@ -1,7 +1,9 @@
-import { connectionTypes, getQueryStrings } from "./QueryStrings"
+import { getQueryStrings } from "./QueryStrings"
 import axios from "axios";
 
-export const queryStrings = getQueryStrings(connectionTypes.localHostURI)
+export const queryStrings = getQueryStrings({URI: process.env.API_URI})
+
+console.log(queryStrings.weatherForecast)
 
 export interface IWeatherForecast {
     date: string,
