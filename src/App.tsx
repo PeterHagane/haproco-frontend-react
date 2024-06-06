@@ -8,9 +8,6 @@ import { setRootColorVars } from './util/RootColorVariables.ts'
 import { appColourTheme } from './stores/Theme.ts'
 import { Toaster } from 'react-hot-toast'
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'

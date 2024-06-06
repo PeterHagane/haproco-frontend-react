@@ -1,7 +1,7 @@
 import cx from "classnames"
 import css from "./MainPage.module.scss"
 import { width } from "../App"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { getAllWeatherForecasts } from "../queries/WeatherForecast"
 
 export const sections = {
@@ -18,7 +18,7 @@ export const MainPage = ({
 
     // const queryClient = useQueryClient()
 
-    const { data, error, isFetched } = useQuery({ queryKey: ['allWeatherForecasts'], queryFn: getAllWeatherForecasts })
+    const { data, error } = useQuery({ queryKey: ['allWeatherForecasts'], queryFn: getAllWeatherForecasts })
 
 
 

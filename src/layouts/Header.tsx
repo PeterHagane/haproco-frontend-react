@@ -3,7 +3,6 @@ import css from "./Header.module.scss"
 import { MoonStars, Sun, Translate } from "@phosphor-icons/react";
 import { useAtom } from "jotai";
 import { appColourTheme } from "../stores/Theme";
-import { Button as ScrollButton } from "react-scroll";
 import { notify } from "../components/Toast";
 import { Theme } from "../util/RootColorVariables";
 import { sections } from "../pages/MainPage";
