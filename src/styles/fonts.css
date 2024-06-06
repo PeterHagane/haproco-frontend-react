@@ -1,0 +1,46 @@
+/* :root */
+/* *{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} */
+
+@font-face {
+    font-family: SpaceMono;
+    src: url(./SpaceMono-Regular.ttf);
+  }
+  
+  /* *{
+    font-family: SpaceMono;
+  } */
+  
+  button,
+  div,
+  p,
+  span,
+  input,
+  li,
+  ul,
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'SpaceMono', Fallback, sans-serif;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    hyphens: none;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    color: var(--text-secondary);
+  }
+  

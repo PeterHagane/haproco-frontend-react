@@ -1,0 +1,28 @@
+// .grid{
+//     width: 1000px;
+//     display:grid;
+//     gap: 1rem;
+//     grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+//   }
+  
+//   .grid{
+//     display:grid;
+//     grid-auto-flow: dense;
+//     gap: 1rem;
+//     
+//     grid-auto-rows: auto;
+//     container-type: inline-size;
+//   }
+
+.grid{
+    // width: calc(100% - 16px);
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    // box-sizing: content-box;
+    // min-width: 1000px;
+    // height: auto;
+    // grid-template-columns: 1fr 1fr;
+}

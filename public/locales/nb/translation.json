@@ -1,0 +1,17 @@
+{
+    "buttons":{
+        "home": "Hjem",
+        "dashboard": "Oversikt"
+    },
+
+    "notifications":{
+        "copied": "Kopierte"
+    },
+
+    "contact":{
+        "phone": "Tlf",
+        "email": "Epost",
+        "linkedin": "LinkedIn" 
+    }
+}
+

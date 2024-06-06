@@ -1,0 +1,162 @@
+.bounce{
+    animation: ease-in bounce 0.2s;
+  }
+  
+  .bungee{
+    animation: ease-in bungee 0.2s;
+  }
+  
+  .fadeIn1000{animation: ease-in fadeIn 1s;}
+  .fadeOut1000{animation: ease-out fadeOut 1s;}
+  
+  .fadeIn{animation: ease-in fadeIn 0.5s;}
+  .fadeOut{animation: ease-out fadeOut 0.5s}
+  
+  .fadeIn200{animation: ease-in fadeIn 0.2s;}
+  .fadeOut200{animation: ease-out fadeOut 0.2s}
+  
+  .fadeIn100{animation: ease-in fadeIn 0.1s;}
+  .fadeOut100{animation: ease-out fadeOut 0.1s}
+  
+  .slideIn{animation: ease-in slideIn 0.5s;}
+  .slideOut{animation: ease-out slideOut 0.5s;}
+  
+  .slideIn200{animation: ease-in slideIn 0.2s;}
+  .slideOut200{animation: ease-out slideOut 0.2s;}
+  
+  .slideIn100{animation: ease-in slideIn 0.1s;}
+  .slideOut100{animation: ease-out slideOut 0.1s;}
+  
+  .slideInRight200{animation: ease-in slideInRight 0.2s;}
+  .slideOutRight200{animation: ease-out slideOutRight 0.2s}
+  
+  .slideInRight100{animation: ease-in slideInRight 0.1s;}
+  .slideOutRight100{animation: ease-out slideOutRight 0.1s;}
+
+  .expandDown200{animation: ease-in expandDown 0.2s;}
+  .contractUp200{animation: ease-in contractUp 0.2s;}
+  
+  .expandDown100{animation: ease-in expandDown 0.1s;}
+  .contractUp100{animation: ease-in contractUp 0.1s;}
+
+  @keyframes expandDown {
+    from {
+        height: 0px;
+    }
+    to {
+        height: auto;
+    }
+  }
+
+  @keyframes contractUp {
+    from {
+        height: auto;
+    }
+    to {
+        height: 0px;
+    }
+  }
+
+  @keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+  @keyframes fadeOut {
+      0% {opacity:1;}
+      100% {opacity:0;}
+  }
+  
+  @keyframes slideIn {
+    from {
+      margin-top: -48px;
+    }
+    to {
+      margin-top: 0;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      margin-top: 0px;
+    }
+    to {
+      margin-top: -48px;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      margin-right: -100%;
+    }
+    to {
+      margin-right: 0;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      margin-right: 0px;
+    }
+    to {
+      margin-right: -100%;
+    }
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translateY(0%);
+    }
+    50%{
+      transform: translateY(-3px);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  
+  @keyframes bungee {
+    from {
+      transform: translateY(0%);
+    }
+    50%{
+      transform: translateY(3px);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scaleY(0.0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes scaleOut {
+    from {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scaleY(0.0);
+    }
+}
+  
+.transformFromTop{
+    transform-origin: top;
+    transform: scaleY(0, 1);
+}
+
+.transformHeight{
+    height: 100%;
+    transition: height 200 0 ease-out;
+}
+

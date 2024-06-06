@@ -2,12 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ph.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Peter Hagane</title>
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <!-- <link href="./src/fonts/SpaceMono-Regular.ttf" rel="stylesheet"/> -->
+    <!-- <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap"
+        rel="stylesheet"> -->
   </head>
-  <body>
+  <body id="body" className="stylesetDefault" style="background-color: black; transition: 1s;">
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <linearGradient id="gradient" x2="1" y2="1">
+        <stop offset="0%" stop-color="hsla(var(--r-nightsky), 1)" />
+        <stop offset="100%" stop-color="hsla(var(--r-ocean), 1)" />
+      </linearGradient>
+    </svg>
   </body>
 </html>

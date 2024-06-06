@@ -1,28 +1,58 @@
 .listBox{
-    padding: 20px;
-    margin-top: 20px;
-    box-sizing: border-box;
-    // padding: 6px;
-    // margin: 12px 0;
-    min-width: 200px;
-    // border-radius: 12px;
-    overflow: auto;
-    background-color: var(--surface-contrast);
-    // filter: drop-shadow(5px 5px 10px #000000);
-    cursor: pointer;
+    // padding: 20px;
+    // margin-top: 20px;
+    // box-sizing: border-box;
+    // min-width: 200px;
+    // overflow: auto;
+    // cursor: pointer;
+    .closed & {
+        opacity: 0;
+        transform: scale(0.95, 0.8);
+        transition: opacity 200ms ease-in, transform 200ms ease-in;
+      }
+      
+      .open & {
+        opacity: 1;
+        transform: scale(1, 1);
+        transition: opacity 100ms ease-out, transform 100ms cubic-bezier(0.43, 0.29, 0.37, 1.48);
+      }
     
+      .placement-top & {
+        transform-origin: bottom;
+      }
     
+      .placement-bottom & {
+        transform-origin: top;
+      }
 
     >li{
-        padding: 8px;
+        transition: opacity 0.1s;
+        display: flex;
+        justify-content: center;
+        height: 48px;
+        // width: 100%;
         cursor: pointer;
         user-select: none;
         list-style: none;
         transition: 0.1s;
         border-radius: 5px;
-    
         &:hover{
-            background-color: hsla(var(--primary), 0.2);
-        }    
+            background-color: hsla(var(--r-primary), 0.05);
+        }
+        
+        >button{
+            padding: 0px 20px 0px 20px;
+        }
     }
+}
+
+.root{
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    background-color: hsla(var(--r-surface-mid), 0.5);
+    transition: opacity 0.1s;
+
+    // width: 150px;
+    // -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0,0.5));
+    // filter: drop-shadow(1px 1px 0px rgba(0, 0, 0,0.5));
 }

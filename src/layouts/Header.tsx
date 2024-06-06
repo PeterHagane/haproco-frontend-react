@@ -1,58 +1,93 @@
 import cx from "classnames"
 import css from "./Header.module.scss"
-import { Link } from "@tanstack/react-router"
-// import Button from "../components/Button"
-// import { Dropdown as MUIDropdown } from '@mui/base/Dropdown';
-// import { MenuButton } from '@mui/base/MenuButton';
-// import { Menu } from '@mui/base/Menu';
-import { MenuItem } from '@mui/base/MenuItem';
-import Dropdown from "../components/Dropdown";
+import { MoonStars, Sun, Translate } from "@phosphor-icons/react";
+import { useAtom } from "jotai";
+import { appColourTheme } from "../stores/Theme";
+import { Button as ScrollButton } from "react-scroll";
+import { notify } from "../components/Toast";
+import { Theme } from "../util/RootColorVariables";
+import { sections } from "../pages/MainPage";
+import { useTranslation } from "react-i18next";
+import { locales } from "../components/LanguageButton";
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { Dropdown } from "../components/DropdownRadix";
+import { width } from "../App";
+
+export const menuOptions = [
+  { to: "Home", id: sections.home.id },
+  { to: "Dashboard", id: sections.dashboard.id },
+];
 
 export const Header = ({
   children
 }: {
   children?: React.ReactNode
 }) => {
+  const { t, i18n } = useTranslation();
+  const [theme, setTheme] = useAtom(appColourTheme)
 
-  const handleClick = (text: string) => {
-
-    console.log(text)
+  const handleSetTheme = (theme: Theme) => {
+    setTheme(theme)
+    return theme
   }
 
-  return <div className={cx(css.headerContainer)}>
-    <></>
-    <Link to="/" className="unset">
-      <button className="defaultButton">Home</button>
-    </Link>
-    <Link to="/about" className="unset">
-      <button className="defaultButton">About</button>
-    </Link>
-    <Link id="dashboardLink" to="/dashboard" className="unset">
-      <button className="defaultButton">Dashboard</button>
-    </Link>
-    <button className="defaultButton">Account</button>
 
-    {/* <MUIDropdown>
-      <MenuButton className="defaultButton">Account</MenuButton>
-      <Menu slotProps={{ listbox: { className: "defaultButton" } }}>
-        <MenuItem onClick={() => handleClick('Profile')}>Profile</MenuItem>
-        <MenuItem onClick={() => handleClick('Language settings')}>
-          Language settings
-        </MenuItem>
-        <MenuItem onClick={() => handleClick('Log out')}>Log out</MenuItem>
-      </Menu>
-    </MUIDropdown> */}
+  const notifyProps = (t: string) => {
+    return {
+      title: `${t} mode`,
+      duration: 1000,
+      icon: t === "dark" ? <MoonStars color={"var(--text-secondary)"}></MoonStars> : <Sun color={"var(--text-secondary)"}></Sun>
+    }
+  }
 
-    <Dropdown mainButtonContent={<>Account</>}>
-      <MenuItem onClick={() => handleClick('Profile')}>Profile</MenuItem>
-      <MenuItem onClick={() => handleClick('Language settings')}>
-        Language settings
-      </MenuItem>
-      <MenuItem onClick={() => handleClick('Log out')}>Log out</MenuItem>
-    </Dropdown>
+  return <div>
+    <div
+      className={cx(
+        width > 6000 && css.fullWidth,
+        css.headerContainer,
+        "flex", "center",
+      )}
+    >
 
-    {children}
+      
+        <div className={cx("flex row marginLeftAuto")}>
+          {menuOptions.map((o, i) => {
+            return <button
+              key={i}
+              className={cx("defaultButton")}>{t("buttons." + o.to.toLowerCase())}</button>
+          })}
+
+          <button className={cx("buttonise padding")}
+            onClick={() => {
+              notify(notifyProps(handleSetTheme(theme === "dark" ? "light" : "dark")))
+            }}>
+            <Sun />
+            <MoonStars />
+          </button>
+          <Dropdown
+            iconButtonClassName={"buttonise padding"}
+            icon={<Translate size={20} />}>
+            {locales.map((lang, i) => {
+              return (<DropdownMenu.Item
+                key={lang.lang + i}
+                onClick={() => {
+                  i18n.changeLanguage(lang.locale)
+                  notify({
+                    title: lang.lang,
+                    duration: 1000,
+                    icon: <Translate className="unset" color={"var(--text-secondary)"}></Translate>
+                  })
+                }}
+              >
+                {lang.lang}
+              </DropdownMenu.Item>)
+            })}
+          </Dropdown>
+        </div>
+      {children}
+    </div>
   </div>
 }
+
 
 export default Header

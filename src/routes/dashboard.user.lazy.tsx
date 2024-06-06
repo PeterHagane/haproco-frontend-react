@@ -9,8 +9,10 @@ export const Route = createLazyFileRoute('/dashboard/user')({
 function User() {
     return <>
         <>
-            dashboard/user
-            
-        </>
+            |
+            <br/>
+            <br/>
+
+            |        </>
     </>
 }

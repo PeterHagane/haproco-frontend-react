@@ -1,20 +1,18 @@
-import cx from "classnames"
-// import themes from "./App.Themes.module.scss"
-// import fonts from  "./App.Fonts.module.scss"
-import "./PageLayout.module.scss"
 import Header from "./Header"
+import { Footer } from "./Footer"
+import css from "./PageLayout.module.scss"
+import cx from "classnames"
 
-
-export const DefaultLayout = ({
+export const PageLayout = ({
     children
 }:{
     children?: React.ReactNode }) => {
-    return <div className={cx(
-        // themes.themeLight
-    )}>
-        <Header></Header>
-        {children}
+
+    return <div className={cx("flex column center", css.pageLayout)}>
+            <Header></Header>
+            {children}
+            <Footer></Footer>
     </div>
 }
 
-export default DefaultLayout
+export default PageLayout

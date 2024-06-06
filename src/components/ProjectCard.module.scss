@@ -1,0 +1,13 @@
+.projectCard{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 10px;
+    background-color: hsla(var(--r-surface-200));
+    box-sizing: border-box;
+
+    *{
+        word-wrap:break-word;
+    }
+}

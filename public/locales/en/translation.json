@@ -1,0 +1,17 @@
+{
+    "buttons":{
+        "home": "Home",
+        "dashboard": "Dashboard"
+    },
+
+    "notifications":{
+        "copied": "Copied"
+    },
+
+
+    "contact":{
+        "phone": "Phone",
+        "email": "Email",
+        "linkedin": "LinkedIn" 
+    }
+}
