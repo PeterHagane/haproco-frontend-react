@@ -1,5 +1,5 @@
 import { routeTree } from './routeTree.gen'
-import { NotFoundRoute, RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
 // import { Route as rootRoute } from './routes/__root.tsx'
 import { useAtom } from 'jotai'
 // import css from "./layouts/App.Themes.module.scss"
