@@ -11,7 +11,7 @@ import { locales } from "../components/LanguageButton";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Dropdown } from "../components/DropdownRadix";
 import { width } from "../App";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 
 export const menuOptions = [
   { name: "Home", to: "/", id: sections.home.id },

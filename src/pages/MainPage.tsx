@@ -1,9 +1,9 @@
 import cx from "classnames"
 import css from "./MainPage.module.scss"
 import { width } from "../App"
-import { useQuery } from "@tanstack/react-query"
-import { getAllWeatherForecasts } from "../queries/WeatherForecast"
-import { testTableQuery } from "../queries/TestTable"
+// import { useQuery } from "@tanstack/react-query"
+// import { getAllWeatherForecasts } from "../queries/WeatherForecast"
+// import { testTableQuery } from "../queries/TestTable"
 
 export const sections = {
     home: { id: crypto.randomUUID() },
