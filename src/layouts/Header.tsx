@@ -11,10 +11,11 @@ import { locales } from "../components/LanguageButton";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Dropdown } from "../components/DropdownRadix";
 import { width } from "../App";
+import { Link, useNavigate } from "@tanstack/react-router";
 
 export const menuOptions = [
-  { to: "Home", id: sections.home.id },
-  { to: "Dashboard", id: sections.dashboard.id },
+  { name: "Home", to: "/", id: sections.home.id },
+  { name: "Dashboard", to: "/dashboard", id: sections.dashboard.id }
 ];
 
 export const Header = ({
@@ -24,6 +25,7 @@ export const Header = ({
 }) => {
   const { t, i18n } = useTranslation();
   const [theme, setTheme] = useAtom(appColourTheme)
+  const navigate = useNavigate()
 
   const handleSetTheme = (theme: Theme) => {
     setTheme(theme)
@@ -48,41 +50,51 @@ export const Header = ({
       )}
     >
 
-      
-        <div className={cx("flex row marginLeftAuto")}>
-          {menuOptions.map((o, i) => {
-            return <button
-              key={i}
-              className={cx("defaultButton")}>{t("buttons." + o.to.toLowerCase())}</button>
-          })}
 
-          <button className={cx("buttonise padding")}
+      <div className={cx("flex row marginLeftAuto")}>
+        {menuOptions.map((o, i) => {
+          return <button
             onClick={() => {
-              notify(notifyProps(handleSetTheme(theme === "dark" ? "light" : "dark")))
-            }}>
-            <Sun />
-            <MoonStars />
-          </button>
-          <Dropdown
-            iconButtonClassName={"buttonise padding"}
-            icon={<Translate size={20} />}>
-            {locales.map((lang, i) => {
-              return (<DropdownMenu.Item
-                key={lang.lang + i}
-                onClick={() => {
-                  i18n.changeLanguage(lang.locale)
-                  notify({
-                    title: lang.lang,
-                    duration: 1000,
-                    icon: <Translate className="unset" color={"var(--text-secondary)"}></Translate>
-                  })
-                }}
-              >
-                {lang.lang}
-              </DropdownMenu.Item>)
-            })}
-          </Dropdown>
-        </div>
+              navigate({ to: o.to })
+            }}
+            key={i}
+            className={cx("defaultButton")}>{t("buttons." + o.name.toLowerCase())}</button>
+        })}
+
+        {process.env.APP_IS_DEV === "true" &&
+          <button onClick={() => {
+            navigate({ to: "/sandbox" })
+          }} style={{ color: "orangered" }} className={cx("defaultButton")} >
+            Dev: Sandbox
+          </button>}
+
+        <button className={cx("buttonise padding")}
+          onClick={() => {
+            notify(notifyProps(handleSetTheme(theme === "dark" ? "light" : "dark")))
+          }}>
+          <Sun />
+          <MoonStars />
+        </button>
+        <Dropdown
+          iconButtonClassName={"buttonise padding"}
+          icon={<Translate size={20} />}>
+          {locales.map((lang, i) => {
+            return (<DropdownMenu.Item
+              key={lang.lang + i}
+              onClick={() => {
+                i18n.changeLanguage(lang.locale)
+                notify({
+                  title: lang.lang,
+                  duration: 1000,
+                  icon: <Translate className="unset" color={"var(--text-secondary)"}></Translate>
+                })
+              }}
+            >
+              {lang.lang}
+            </DropdownMenu.Item>)
+          })}
+        </Dropdown>
+      </div>
       {children}
     </div>
   </div>

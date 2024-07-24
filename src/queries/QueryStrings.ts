@@ -7,6 +7,7 @@ export const connectionTypes = {
 export const getQueryStrings = ({URI = process.env.API_URI}:{URI?: string}) => {
     const queryStrings = {
         weatherForecast: URI + "/weatherforecast",
+        testTable: URI + "/testtable",
     }
     
     return queryStrings
