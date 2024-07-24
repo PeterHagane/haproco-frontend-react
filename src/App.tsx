@@ -1,6 +1,6 @@
 import { routeTree } from './routeTree.gen'
 import { NotFoundRoute, RouterProvider, createRouter } from '@tanstack/react-router'
-import { Route as rootRoute } from './routes/__root.tsx'
+// import { Route as rootRoute } from './routes/__root.tsx'
 import { useAtom } from 'jotai'
 // import css from "./layouts/App.Themes.module.scss"
 import { Suspense, useEffect } from 'react'
@@ -15,14 +15,14 @@ import {
 export const height = window.innerHeight
 export const width = window.innerWidth
 
-const notFoundRoute = new NotFoundRoute({
-  getParentRoute: () => rootRoute,
-  component: () => '404 Not Found',
-})
+// const notFoundRoute = new NotFoundRoute({
+//   getParentRoute: () => rootRoute,
+//   component: () => '404 Not Found',
+// })
 
 const router = createRouter({
   routeTree,
-  notFoundRoute,
+  // notFoundRoute,
 })
 
 declare module '@tanstack/react-router' {
