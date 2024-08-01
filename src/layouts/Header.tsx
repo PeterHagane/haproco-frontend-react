@@ -141,15 +141,15 @@ export const Header = ({
     </div>
   </div>
 }
-const userButtonOptions = [
-  {label: "signin", func: ()=> console.log("signin!"), el:
-  <form>
-    <input type=""></input>
-    <input type=""></input>
-    <input type="button"></input>
-  </form>}, 
-  {label: "signout", func: ()=> console.log("signout!")}, 
-  {label: "signup", func: ()=> console.log("signup!")}, 
-]
+// const userButtonOptions = [
+//   {label: "signin", func: ()=> console.log("signin!"), el:
+//   <form>
+//     <input type=""></input>
+//     <input type=""></input>
+//     <input type="button"></input>
+//   </form>}, 
+//   {label: "signout", func: ()=> console.log("signout!")}, 
+//   {label: "signup", func: ()=> console.log("signup!")}, 
+// ]
 
 export default Header
