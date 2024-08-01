@@ -24,9 +24,9 @@ const DropdownRadix = ({
     iconButtonClassName,
     icon,
     // isOpenExternal,
-    setIsOpenExternal
-    // onClick,
-    // style, 
+    setIsOpenExternal,
+    onClick,
+    style, 
     // isDisabled,
     // // tooltip,
 }: IDropdown) => {
@@ -34,12 +34,12 @@ const DropdownRadix = ({
     return <>
         <DropdownMenu.Root modal={false} onOpenChange={(e) => { setIsOpenExternal && setIsOpenExternal(e) }}>
             <DropdownMenu.Trigger asChild>
-                <button className={cx("flex center", iconButtonClassName)} aria-label="Customise options">
+                <button onClick={onClick} className={cx("flex center iconButton", iconButtonClassName)} aria-label="Customise options">
                     {mainButtonContent}{icon}
                 </button>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Portal>
-                <DropdownMenu.Content className={cx(css.dropdownMenuContent, "", className)}>
+            <DropdownMenu.Portal >
+                <DropdownMenu.Content style={style} className={cx(css.dropdownMenuContent, "shadow", className)} >
                     {children}
                 </DropdownMenu.Content>
             </DropdownMenu.Portal>
@@ -73,7 +73,7 @@ const DropdownRadixSub = ({
                     // className="DropdownMenuSubContent"
                     // sideOffset={2}
                     // alignOffset={-5}
-                    className={cx(css.dropdownMenuContent, "", className)}
+                    className={cx(css.dropdownMenuContent, "shadow", className)}
                 >
                     {children}
                     {/* <DropdownMenu.Item className="DropdownMenuItem">

@@ -5,12 +5,6 @@ import { width } from "../App"
 // import { getAllWeatherForecasts } from "../queries/WeatherForecast"
 // import { testTableQuery } from "../queries/TestTable"
 
-export const sections = {
-    home: { id: crypto.randomUUID() },
-    dashboard: { id: crypto.randomUUID() },
-}
-
-
 export const MainPage = ({
     children
 }: {
@@ -23,7 +17,7 @@ export const MainPage = ({
         width > 600 && css.desktop)}>
 
         {children}
-        asdads
+        MainPage
         
     </div>
 }

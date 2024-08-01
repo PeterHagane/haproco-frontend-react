@@ -6,13 +6,22 @@ export const getDimensionsOfElementById = (id: string) =>{
   return {x: e?.offsetWidth || 0, y: e?.offsetHeight || 0}
 } 
 
-export const changeStyleOfElementById = (id: string, cssClass: string, delay?: number, remove?: boolean) =>{
-    const e = document.getElementById(id)
-    !remove && e?.classList.add(cssClass)
-    remove && e?.classList.remove(cssClass)
-    //cleanup for animations
-    delay && delayStateChange(()=>e?.classList.remove(cssClass), delay)
-} 
+export const changeStyleOfElementById = (id: string, cssClass: string, delay?: number, remove?: boolean) => {
+  const e = document.getElementById(id)
+  !remove && e?.classList.add(cssClass)
+  remove && e?.classList.remove(cssClass)
+  //cleanup for animations
+  delay && delayStateChange(() => e?.classList.remove(cssClass), delay)
+}
+
+export const changeStyle = (element: HTMLElement, cssClass: string, delay?: number, remove?: boolean) => {
+  console.log(element)
+
+  !remove && element?.classList.add(cssClass)
+  remove && element?.classList.remove(cssClass)
+  //cleanup for animations
+  delay && delayStateChange(() => element?.classList.remove(cssClass), delay)
+}
 
 export const delayStateChange = (callback: () => void, delay: number) => {
   setTimeout(() => {

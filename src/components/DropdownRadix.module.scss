@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
 
-    >* {
+    >*[role=menuitem]{
         border-radius: 5px;
         padding: 5px 5px 5px 5px;
         cursor: pointer;
@@ -33,6 +33,7 @@
     transform-origin: var(--radix-dropdown-menu-content-transform-origin);
     animation: scaleOut 0.1s ease-in;
 }
+
 
 
 @keyframes scaleIn {

@@ -5,12 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 import { getAllWeatherForecasts } from "../queries/WeatherForecast"
 import { testTableQuery } from "../queries/TestTable"
 
-export const sections = {
-    home: { id: crypto.randomUUID() },
-    dashboard: { id: crypto.randomUUID() },
-}
-
-
 export const SandBoxPage = ({
     children
 }: {
@@ -20,10 +14,7 @@ export const SandBoxPage = ({
     // const queryClient = useQueryClient()
 
     const { data, error } = useQuery({ queryKey: ['allWeatherForecasts'], queryFn: getAllWeatherForecasts })
-    
     const { testTableData, testTableIsLoading, testTableError } = testTableQuery()
-
-    console.log(testTableData)
 
     return <div className={cx(
         css.mainPage,

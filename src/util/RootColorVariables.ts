@@ -79,7 +79,13 @@ const themeLightRaw = [
     "--r-good: var(--color-good)",
 
     "--r-ocean: var(--color-ocean)",
-    "--r-nightsky: var(--color-nightsky)"
+    "--r-nightsky: var(--color-nightsky)",
+
+    // "--p-shadow: hsla(var(--black))",
+    "--p-shadow: hsla(from hsla(var(--black)) h s calc(l + 70))",
+    // from hsla(var(--black) h s calc(l), 0.5)
+    //           hsla(from hsla(var(--r-surface-back)) h s calc(l + 4))
+    
 ]
 
 const themeDarkRaw = [
@@ -110,7 +116,10 @@ const themeDarkRaw = [
     "--r-good: var(--color-good)",
     
     "--r-ocean: var(--color-ocean)",
-    "--r-nightsky: var(--color-nightsky)"
+    "--r-nightsky: var(--color-nightsky)",
+
+    "--p-shadow: hsla(var(--black))",
+    // "--r-shadow: hsla(from hsla(var(--black)) h s calc(l), 0.5)",
 ]
 
 // background: rgb(73,69,143);
@@ -145,6 +154,8 @@ const mappedTheme = [
 
     "--ocean:           hsl(var(--color-ocean))",
     "--nightsky:        hsl(var(--color-nightsky))",
+
+    "--shadow:          var(--p-shadow)",
 
     "--gradient: linear-gradient(90deg, hsla(var(--r-nightsky), 0.1) 0%, hsla(var(--r-ocean), 0.1) 100%);"
 ]

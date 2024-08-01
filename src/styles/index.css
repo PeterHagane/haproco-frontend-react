@@ -47,6 +47,11 @@ img{
   &:focus{
     background-color: hsla(var(--r-primary), 0.1);
   }
+
+  &.small{
+    padding: 0px 5px 0px 5px;
+    min-height: 34px;
+  }
 }
 
 .iconButton {
@@ -70,7 +75,10 @@ img{
   &.padding{
     padding: 0px 9px 0px 9px;
   }
+
 }
+
+
 
 .tinyButton {
   transition: 0.1s;
@@ -402,3 +410,125 @@ html {
   --color-nightsky: 243, 35%, 42%;
 }
 
+.padding-s{
+  padding: 5px 5px 5px 5px;
+}
+
+.padding-m{
+  padding: 10px 10px 10px 10px;
+}
+
+.padding-l{
+  padding: 15px 15px 15px 15px;
+}
+
+.padding-sh{
+  padding: 0px 5px 0px 5px;
+}
+
+.padding-mh{
+  padding: 0px 10px 0px 10px;
+}
+
+.padding-lh{
+  padding: 0px 15px 0px 15px;
+}
+
+.padding-sv{
+  padding: 5px 0px 5px 0px;
+}
+
+.padding-mv{
+  padding: 10px 0px 10px 0px;
+}
+
+.padding-lv{
+  padding: 15px 0px 15px 0px;
+}
+
+.gap-s{ gap: 5px}
+.gap-m{ gap: 10px}
+.gap-l{ gap: 15px}
+
+.shadow{
+  box-shadow: 12px 12px 12px var(--shadow);
+}
+
+.shadowSmall{
+  
+  /* &:focus{
+    box-shadow: 4px 4px 7px var(--shadow);
+  }
+  
+  &:hover{
+    box-shadow: 4px 4px 7px var(--shadow);
+  } */
+}
+
+form{
+  &:invalid{
+    [type=submit]{
+      cursor: not-allowed;
+      color: hsla(from var(--error) h s l / 1);
+      &:hover{
+        background-color: hsla(from red h s l / 0.1);
+      }
+    }
+  }
+
+  .inputContainer{
+    position: relative;
+
+  >label{
+      transition: 200ms;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      pointer-events: none;
+      opacity: 0.7;
+  }
+
+  >input{
+    all: unset;
+    transition: 0.1s;
+    padding: 5px;
+    background-color: hsla(var(--r-primary), 0.1);
+    
+    &:invalid{
+      /* background-color: hsla(var(--r-error), 0.1); */
+    }
+    
+    /* &:hover {
+      box-shadow: 4px 4px 7px var(--shadow);
+    } */
+  
+    &:focus{
+      /* box-shadow: 4px 4px 7px var(--shadow); */
+      background-color: hsla(var(--r-primary), 0.2);
+      /* padding-top: 20px; */
+    }
+
+    &:not(:placeholder-shown){
+      padding-top: 20px;
+
+      & ~ label{
+        top: 0px;
+        font-size: smaller;
+        opacity: 1;
+      }
+    }
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:valid ~ label{
+      /* color: var(--good) */
+    }
+  }
+}
+}
+
+.flexStart{
+  align-items: flex-start;
+}

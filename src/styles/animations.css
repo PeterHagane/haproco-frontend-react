@@ -1,4 +1,4 @@
-.bounce{
+  .bounce{
     animation: ease-in bounce 0.2s;
   }
   
@@ -6,6 +6,43 @@
     animation: ease-in bungee 0.2s;
   }
   
+/* .bounceSVG{.bounceSVG{
+  &:active { 
+    transform: scale(0.9); 
+  } 
+}
+  &:active { 
+    transform: scale(0.9); 
+  } 
+} */
+
+  
+.bounceSVG{
+  svg{
+    animation: ease-in bounce 0.2s;
+  }
+}
+
+.bounceChild{
+  :nth-child(1){
+    animation: ease-in bounce 0.2s;
+  }
+}
+
+.scaleSVG{
+  svg{
+      transition: 100ms;
+      transform: scale(0.9);
+  }
+}
+
+.scaleChild{
+  :nth-child(1){
+    transition: 100ms;
+    transform: scale(0.9);
+  }
+}
+
   .fadeIn1000{animation: ease-in fadeIn 1s;}
   .fadeOut1000{animation: ease-out fadeOut 1s;}
   

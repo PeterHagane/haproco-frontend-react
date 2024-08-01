@@ -11,6 +11,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { PocketBaseProvider } from './stores/PocketBaseProvider.tsx'
 
 export const height = window.innerHeight
 export const width = window.innerWidth
@@ -47,8 +48,10 @@ function App() {
       {/* Empty fragment could be "Loading...", but the loading takes a fraction of a second */}
       <QueryClientProvider client={queryClient}>
         <Suspense fallback={<></>}>
-          <RouterProvider router={router} />
-          <Toaster />
+          <PocketBaseProvider>
+            <RouterProvider router={router} />
+            <Toaster />
+          </PocketBaseProvider>
         </Suspense>
       </QueryClientProvider>
     </div>

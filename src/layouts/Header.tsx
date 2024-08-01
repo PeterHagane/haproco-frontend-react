@@ -1,17 +1,24 @@
 import cx from "classnames"
 import css from "./Header.module.scss"
-import { MoonStars, Sun, Translate } from "@phosphor-icons/react";
+import { MoonStars, Sun, Translate, User } from "@phosphor-icons/react";
 import { useAtom } from "jotai";
 import { appColourTheme } from "../stores/Theme";
 import { notify } from "../components/Toast";
 import { Theme } from "../util/RootColorVariables";
-import { sections } from "../pages/MainPage";
 import { useTranslation } from "react-i18next";
 import { locales } from "../components/LanguageButton";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Dropdown } from "../components/DropdownRadix";
 import { width } from "../App";
 import { useNavigate } from "@tanstack/react-router";
+import { Login } from "../components/Login";
+import { changeStyle } from "../util/Utils";
+import { usePocket } from "../stores/PocketBaseProvider";
+
+export const sections = {
+  home: { id: crypto.randomUUID() },
+  dashboard: { id: crypto.randomUUID() },
+}
 
 export const menuOptions = [
   { name: "Home", to: "/", id: sections.home.id },
@@ -26,12 +33,12 @@ export const Header = ({
   const { t, i18n } = useTranslation();
   const [theme, setTheme] = useAtom(appColourTheme)
   const navigate = useNavigate()
+  const { pb } = usePocket();
 
   const handleSetTheme = (theme: Theme) => {
     setTheme(theme)
     return theme
   }
-
 
   const notifyProps = (t: string) => {
     return {
@@ -54,14 +61,15 @@ export const Header = ({
       <div className={cx("flex row marginLeftAuto")}>
         {menuOptions.map((o, i) => {
           return <button
-            onClick={() => {
+            onClick={(e) => {
               navigate({ to: o.to })
+              changeStyle(e.currentTarget as HTMLElement, "bounceChild", 200)
             }}
             key={i}
             className={cx("defaultButton")}>{t("buttons." + o.name.toLowerCase())}</button>
         })}
 
-        {process.env.APP_IS_DEV === "true" &&
+        {(process.env.APP_IS_DEV === "true" || !!pb?.authStore.isAdmin) &&
           <button onClick={() => {
             navigate({ to: "/sandbox" })
           }} style={{ color: "orangered" }} className={cx("defaultButton")} >
@@ -69,13 +77,15 @@ export const Header = ({
           </button>}
 
         <button className={cx("buttonise padding")}
-          onClick={() => {
+          onClick={(e) => {
             notify(notifyProps(handleSetTheme(theme === "dark" ? "light" : "dark")))
+            changeStyle(e.currentTarget as HTMLElement, "bounceSVG", 200)
           }}>
           <Sun />
           <MoonStars />
         </button>
         <Dropdown
+          onClick={(e) => changeStyle(e.currentTarget as HTMLElement, "bounceSVG", 200)}
           iconButtonClassName={"buttonise padding"}
           icon={<Translate size={20} />}>
           {locales.map((lang, i) => {
@@ -94,11 +104,52 @@ export const Header = ({
             </DropdownMenu.Item>)
           })}
         </Dropdown>
+
+        <Dropdown
+          onClick={(e) => changeStyle(e.currentTarget as HTMLElement, "bounceChild", 200)}
+          iconButtonClassName={"buttonise padding"}
+          icon={<User size={20} />}>
+            {/* <DropdownMenu.Item> */}
+
+              <Login>
+              </Login>
+            {/* </DropdownMenu.Item> */}
+            
+          {/* {
+            userButtonOptions.map((option, i) => {
+            return (<DropdownMenu.Item
+              key={option.label + i}
+              onClick={() => {
+                option.func()
+                notify({
+                  title: option.label,
+                  duration: 1000,
+                  icon: <Translate className="unset" color={"var(--text-secondary)"}></Translate>
+                })
+              }}
+            >
+              {option.label}
+            </DropdownMenu.Item>
+            
+            )
+          })} */}
+
+        </Dropdown>
+        
       </div>
       {children}
     </div>
   </div>
 }
-
+const userButtonOptions = [
+  {label: "signin", func: ()=> console.log("signin!"), el:
+  <form>
+    <input type=""></input>
+    <input type=""></input>
+    <input type="button"></input>
+  </form>}, 
+  {label: "signout", func: ()=> console.log("signout!")}, 
+  {label: "signup", func: ()=> console.log("signup!")}, 
+]
 
 export default Header
