@@ -2,7 +2,7 @@ import cx from "classnames";
 import css from "./Login.module.scss"
 import { useRef } from "react";
 import ModalTabManager from "./ModalTabManager";
-import {ILoginForm, usePocket} from "../stores/PocketBaseProvider";
+import {ILoginForm, usePocket, pb} from "../stores/PocketBaseProvider";
 import { useForm } from "react-hook-form";
 
 interface ILogin {
@@ -13,8 +13,8 @@ interface ILogin {
 }
 
 export const loginIds = {
-    unid: crypto.randomUUID(),
-    pwid: crypto.randomUUID()
+    unid: "username",
+    pwid: "password"
 }
 
 export const Login = ({
@@ -26,7 +26,7 @@ export const Login = ({
 ) => {
     const formRef = useRef<HTMLFormElement>(null)
     const { register, handleSubmit } = useForm<ILoginForm>();
-    const { signIn, signOut, pb, user, isLoading, isError} = usePocket();
+    const { signIn, signOut, user, isLoading, isError} = usePocket();
     const isSignedIn = pb?.authStore.isValid
 
     const login = async (data: ILoginForm) => {

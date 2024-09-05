@@ -16,8 +16,8 @@ import { changeStyle } from "../util/Utils";
 import { usePocket } from "../stores/PocketBaseProvider";
 
 export const sections = {
-  home: { id: crypto.randomUUID() },
-  dashboard: { id: crypto.randomUUID() },
+  home: { id: "home" },
+  dashboard: { id: "dashboard" },
 }
 
 export const menuOptions = [
