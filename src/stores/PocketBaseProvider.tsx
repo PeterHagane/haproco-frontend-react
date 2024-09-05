@@ -1,5 +1,5 @@
 import PocketBase from 'pocketbase';
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 const url = 'https://haproco.pockethost.io/'
 export const pb = new PocketBase(url)
