@@ -2,9 +2,8 @@ import PocketBase from 'pocketbase';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 const url = 'https://haproco.pockethost.io/'
-// export const pb = new PocketBase(url)
+export const pb = new PocketBase(url)
 
-// export default pb
 
 export interface ILoginForm {
     username: string
@@ -27,7 +26,8 @@ export type PocketSession = {
 const PocketContext = createContext<Partial<PocketSession>>({})
 
 export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
-        const pb = useMemo(()=> new PocketBase(url),[])
+        // const pb = useMemo(()=> new PocketBase(url),[])
+        // const pb = useMemo(()=> pocketBase,[])
         const [user, setUser] = useState(pb.authStore.model)
         const [isLoading, setIsLoading] = useState(false)
         const [isError, setIsError] = useState<any>()
@@ -47,6 +47,10 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)})
+                .catch((e)=>{
+                    setIsError(e)
+                    }
+                )
         },[])
 
         const signIn = useCallback(async({username, password}:ILoginForm)=>{

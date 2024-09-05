@@ -15,8 +15,6 @@ export const changeStyleOfElementById = (id: string, cssClass: string, delay?: n
 }
 
 export const changeStyle = (element: HTMLElement, cssClass: string, delay?: number, remove?: boolean) => {
-  console.log(element)
-
   !remove && element?.classList.add(cssClass)
   remove && element?.classList.remove(cssClass)
   //cleanup for animations
