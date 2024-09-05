@@ -1,7 +1,7 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { PageLayout } from '../layouts/PageLayout'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 // import { useAtom } from 'jotai'
 // import { appColourTheme } from '../stores/Theme'
 

@@ -12,7 +12,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { PocketBaseProvider } from './stores/PocketBaseProvider.tsx'
-import { notFound } from './routes/_notFound.tsx'
+// import { notFound } from './routes/_notFound.tsx'
 
 export const height = window.innerHeight
 export const width = window.innerWidth
@@ -28,7 +28,7 @@ const router = createRouter({
   context: {
     auth: undefined
   },
-  globalNotFound: notFound
+  // globalNotFound: notFound
   // notFoundRoute,
 })
 
