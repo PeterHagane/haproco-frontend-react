@@ -13,7 +13,8 @@ import {
 } from '@tanstack/react-query'
 import { PocketBaseProvider } from './stores/PocketBaseProvider.tsx'
 // import { notFound } from './routes/_notFound.tsx'
-import "./i18n/config.js"
+// import "./i18n/config.js"
+import initi18n from './i18n/config.ts'
 
 export const height = window.innerHeight
 export const width = window.innerWidth
@@ -42,6 +43,7 @@ declare module '@tanstack/react-router' {
 const queryClient = new QueryClient()
 
 function App() {
+  initi18n()
 
   const [theme] = useAtom(appColourTheme)
 
