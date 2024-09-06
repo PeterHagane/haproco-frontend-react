@@ -42,14 +42,16 @@ declare module '@tanstack/react-router' {
 
 const queryClient = new QueryClient()
 
-function App() {
-  initi18n()
-
+function App() {  
   const [theme] = useAtom(appColourTheme)
 
   useEffect(() => {
     setRootColorVars(theme)
   }, [theme])
+
+  useEffect(() => {
+    initi18n()
+  },[])
 
   return (
     <div id="app" className='stylesetDefault'>
