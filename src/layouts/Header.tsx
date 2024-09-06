@@ -40,11 +40,14 @@ export const Header = ({
     return theme
   }
 
-  const notifyProps = (t: string) => {
+
+  const notifyProps = (theme: string) => {
+    console.log(theme)
+
     return {
-      title: `${t} mode`,
+      title: `${theme} mode`,
       duration: 1000,
-      icon: t === "dark" ? <MoonStars color={"var(--text-secondary)"}></MoonStars> : <Sun color={"var(--text-secondary)"}></Sun>
+      icon: theme === "dark" ? <MoonStars color={"var(--text-secondary)"}></MoonStars> : <Sun color={"var(--text-secondary)"}></Sun>
     }
   }
 
@@ -77,8 +80,9 @@ export const Header = ({
           </button>}
 
         <button className={cx("buttonise padding")}
-          onClick={(e) => {
-            notify(notifyProps(handleSetTheme(theme === "dark" ? "light" : "dark")))
+          onClick={ (e) => {
+            let t = handleSetTheme(theme === "dark" ? "light" : "dark")
+            notify(notifyProps(t))
             changeStyle(e.currentTarget as HTMLElement, "bounceSVG", 200)
           }}>
           <Sun />
