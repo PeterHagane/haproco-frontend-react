@@ -42,9 +42,7 @@ declare module '@tanstack/react-router' {
 
 const queryClient = new QueryClient()
 
-function App() {
-  initi18n()
-
+function App() {  
   const [theme] = useAtom(appColourTheme)
 
   useEffect(() => {
