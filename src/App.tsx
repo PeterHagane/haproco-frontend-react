@@ -13,6 +13,7 @@ import {
 } from '@tanstack/react-query'
 import { PocketBaseProvider } from './stores/PocketBaseProvider.tsx'
 // import { notFound } from './routes/_notFound.tsx'
+import "./i18n/config.js"
 
 export const height = window.innerHeight
 export const width = window.innerWidth
