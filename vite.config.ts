@@ -15,12 +15,14 @@ export default defineConfig(({ mode }) => {
     'process.env.API_PASSWORD': JSON.stringify(env.API_PASSWORD)
   }
 
-  const port =  process.env.APP_IS_DEV === "true" ? 5174 : 5173;
+  const port =  env.APP_IS_DEV === "true" ? 5174 : 5173;
 
   return {
     define: environmentVars,
     plugins: plugins,
-    port: port
+    server: {
+      port: port
+    }
     }
   }
 )
