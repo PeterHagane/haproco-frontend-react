@@ -22,7 +22,6 @@ export const SandBoxPage = ({
         width > 600 && css.desktop)}>
 
         {children}
-        asdads
 
         {data && data?.map((f, i)=>{
             return <div className="fadeIn" key={f.summary + i}>{f.summary}</div>

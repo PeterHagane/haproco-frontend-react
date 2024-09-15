@@ -7,10 +7,10 @@ export const Route = createLazyFileRoute('/sandbox')({
 })
 
 function SandBox() {
-    const {pb} = usePocket()
+    const {isAdmin} = usePocket()
 
-    if(!pb?.authStore.isAdmin){
-        return <>No access.</>
+    if(!isAdmin){
+        return <div style={{marginTop: "48px"}}>No access.</div>
     }
 
     return <>

@@ -21,6 +21,8 @@ export type PocketSession = {
     pb: PocketBase
     isLoading: boolean
     isError: any
+    isSignedIn: boolean
+    isAdmin: boolean
 }
 
 const PocketContext = createContext<Partial<PocketSession>>({})
@@ -86,7 +88,7 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
             pb.authStore.clear()
         },[])
 
-    return <PocketContext.Provider value={{registerUser, signIn, signOut, adminSignIn, isError, isLoading, user, pb}}>
+    return <PocketContext.Provider value={{registerUser, signIn, signOut, adminSignIn, isError, isLoading, user, pb, isSignedIn: pb.authStore.isValid, isAdmin: pb.authStore.isAdmin}}>
         {children}
     </PocketContext.Provider>
 }

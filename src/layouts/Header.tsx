@@ -33,7 +33,7 @@ export const Header = ({
   const { t, i18n } = useTranslation();
   const [theme, setTheme] = useAtom(appColourTheme)
   const navigate = useNavigate()
-  const { pb } = usePocket();
+  const { isAdmin } = usePocket();
 
   const handleSetTheme = (theme: Theme) => {
     setTheme(theme)
@@ -72,7 +72,7 @@ export const Header = ({
             className={cx("defaultButton")}>{t("buttons." + o.name.toLowerCase())}</button>
         })}
 
-        {(process.env.APP_IS_DEV === "true" || !!pb?.authStore.isAdmin) &&
+        {(process.env.APP_IS_DEV === "true" && isAdmin) &&
           <button onClick={() => {
             navigate({ to: "/sandbox" })
           }} style={{ color: "orangered" }} className={cx("defaultButton")} >
