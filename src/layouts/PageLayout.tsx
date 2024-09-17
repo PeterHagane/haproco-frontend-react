@@ -8,7 +8,7 @@ export const PageLayout = ({
 }:{
     children?: React.ReactNode }) => {
 
-    return <div className={cx("flex column center", css.pageLayout)}>
+    return <div className={cx(css.pageLayout, "flex column justifyContentCenter alignItemsCenter")}>
             <Header></Header>
             {children}
             <Footer></Footer>

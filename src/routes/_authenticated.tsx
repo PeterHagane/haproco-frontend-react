@@ -1,9 +1,10 @@
 import { createFileRoute, redirect } from "@tanstack/react-router"
+import { pb } from "../stores/PocketBaseProvider"
 
 
 export const Route = createFileRoute('/_authenticated')({
     beforeLoad: async ({ location }) => {
-      if (true) {
+      if (!pb.authStore.isValid) {
         throw redirect({
           to: '/login',
           search: {

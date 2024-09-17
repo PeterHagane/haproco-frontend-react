@@ -21,8 +21,8 @@ export const sections = {
 }
 
 export const menuOptions = [
-  { name: "Home", to: "/", id: sections.home.id },
-  { name: "Dashboard", to: "/dashboard", id: sections.dashboard.id }
+  { name: "Home", to: "/", requiresAuth: true, id: sections.home.id },
+  { name: "Dashboard", to: "/dashboard",  requiresAuth: true, id: sections.dashboard.id }
 ];
 
 export const Header = ({
@@ -33,7 +33,7 @@ export const Header = ({
   const { t, i18n } = useTranslation();
   const [theme, setTheme] = useAtom(appColourTheme)
   const navigate = useNavigate()
-  const { isAdmin } = usePocket();
+  const { isAdmin, isSignedIn } = usePocket();
 
   const handleSetTheme = (theme: Theme) => {
     setTheme(theme)
@@ -54,15 +54,15 @@ export const Header = ({
   return <div>
     <div
       className={cx(
-        width > 6000 && css.fullWidth,
+        width > 600 && css.fullWidth,
         css.headerContainer,
         "flex", "center",
       )}
     >
-
-
       <div className={cx("flex row marginLeftAuto")}>
         {menuOptions.map((o, i) => {
+          if(o.requiresAuth && !isSignedIn)return
+
           return <button
             onClick={(e) => {
               navigate({ to: o.to })
@@ -79,7 +79,7 @@ export const Header = ({
             Dev: Sandbox
           </button>}
 
-        <button className={cx("buttonise padding")}
+        <button className={cx("buttonise padding height-50")}
           onClick={ (e) => {
             let t = handleSetTheme(theme === "dark" ? "light" : "dark")
             notify(notifyProps(t))
