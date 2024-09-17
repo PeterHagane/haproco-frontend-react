@@ -5,7 +5,7 @@ const ModalTabManager = ({ containerRef, children }:{containerRef: any, children
 
     const focusableElements = () => {
         return [...containerRef?.current?.querySelectorAll(
-            'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"]):not([type="hidden"]):not([disabled])'
+            'a, button, input, textarea, select, details, div, [tabindex]:not([tabindex="-1"]):not([type="hidden"]):not([disabled])'
         )];
     }
 

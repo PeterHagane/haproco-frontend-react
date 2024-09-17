@@ -11,10 +11,10 @@ export interface ILoginForm {
 }
 
 export type PocketSession = {
-    registerUser: ({ username, password }: ILoginForm) => Promise<void>
-    signIn: ({ username, password }: ILoginForm) => Promise<void>
+    registerUser: ({ username, password }: ILoginForm)  => Promise<boolean | void>
+    signIn: ({ username, password }: ILoginForm) => Promise<boolean | void>
     signOut: ()=>void
-    adminSignIn: ({ username, password }: ILoginForm) => Promise<void>
+    adminSignIn: ({ username, password }: ILoginForm) => Promise<boolean | void>
     user: {
         [key: string]: any;
     } | null
@@ -34,12 +34,12 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
         const [isLoading, setIsLoading] = useState(false)
         const [isError, setIsError] = useState<any>()
 
-
         useEffect(()=>{
             return pb.authStore.onChange(model => setUser({model}))
         },[])
 
         const registerUser = useCallback(async({username, password}:ILoginForm)=>{
+            setIsError(null)
             setIsLoading(true)
             return await pb
                 .collection("users")
@@ -48,14 +48,18 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 })
                 .then(()=>{
                     setUser(pb.authStore.model)
-                    setIsLoading(false)})
+                    setIsLoading(false)
+                    return true
+                })
                 .catch((e)=>{
                     setIsError(e)
+                    return false
                     }
                 )
         },[])
 
         const signIn = useCallback(async({username, password}:ILoginForm)=>{
+            setIsError(null)
             setIsLoading(true)
             return await pb
                 .collection("users")
@@ -63,6 +67,7 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)
+                    return true
                 }).catch(()=>{
                     setIsLoading(true)
                     adminSignIn({username, password})
@@ -70,16 +75,20 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
         },[])
 
         const adminSignIn = useCallback(async({username, password}:ILoginForm)=>{
-            // setIsLoading(true)
+            setIsError(null)
+            setIsLoading(true)
             return await pb
                 .admins
                 .authWithPassword(username, password)
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)
+                    return true
                 })
                 .catch((e)=>{
                     setIsError(e)
+                    setIsLoading(false)
+                    return false
                 })
                 
         },[])

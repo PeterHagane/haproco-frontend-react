@@ -1,9 +1,8 @@
 /* @import url("stylesets.css");
 @import url("fonts.css"); */
-
 body {
   all: unset;
-  height: 100%;
+  height: 100dvh;
   background-color: var(--surface-100);
 }
 
@@ -531,4 +530,12 @@ form{
 
 .flexStart{
   align-items: flex-start;
+}
+
+.height-50{
+  height: 50px;
+}
+
+.padding-5{
+  padding: 5px;
 }

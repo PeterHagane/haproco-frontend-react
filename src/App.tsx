@@ -1,8 +1,6 @@
 import { routeTree } from './routeTree.gen'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-// import { Route as rootRoute } from './routes/__root.tsx'
 import { useAtom } from 'jotai'
-// import css from "./layouts/App.Themes.module.scss"
 import { Suspense, useEffect } from 'react'
 import { setRootColorVars } from './util/RootColorVariables.ts'
 import { appColourTheme } from './stores/Theme.ts'
@@ -12,9 +10,9 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { PocketBaseProvider } from './stores/PocketBaseProvider.tsx'
+import initi18n from './i18n/config.ts'
 // import { notFound } from './routes/_notFound.tsx'
 // import "./i18n/config.js"
-import initi18n from './i18n/config.ts'
 
 export const height = window.innerHeight
 export const width = window.innerWidth
@@ -54,7 +52,8 @@ function App() {
   },[])
 
   return (
-    <div id="app" className='stylesetDefault'>
+    // className={cx('stylesetDefault')}
+    <div id="app" style={{height: "100dvh"}}>
       {/* Suspense to prevent react error 426 (resources loading)*/}
       {/* Empty fragment could be "Loading...", but the loading takes a fraction of a second */}
       <QueryClientProvider client={queryClient}>
