@@ -21,7 +21,6 @@ export const LoginPage = ({
         <Login></Login>
         {children}
     </div>
-
 }
 
 export default LoginPage
