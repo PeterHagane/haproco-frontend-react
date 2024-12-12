@@ -1,0 +1,40 @@
+.sidebarContainer{
+    // display: grid;
+    // grid-template-columns:  0fr;
+    // transition: grid-template-columns 300ms;
+
+    // &.open{
+    //     grid-template-columns: 1fr;
+    //     margin: 5px 45px 5px 25px;
+    // }
+}
+
+
+.sidebar{
+    height: 100%;
+    width: auto;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 300ms; 
+    width: 0;
+
+    &.open {
+        // padding: 5px 45px 5px 25px;
+        width: 300px;
+        width: calc-size(auto); 
+    }    
+}
+
+.buttonContainer{
+    position: relative; 
+    //uncomment if you want the button to move with the drawer
+    display: flex;
+
+}
+
+.toggleButton{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+
+}

@@ -1,5 +1,10 @@
 /* @import url("stylesets.css");
 @import url("fonts.css"); */
+*{
+  /* transition: 0.5s; */
+  /* outline: 1px solid #33FF3388; */
+}
+
 body {
   all: unset;
   height: 100dvh;
@@ -26,8 +31,6 @@ img{
   all: unset;
 }
 
-
-
 .defaultButton {
   all: unset;
   padding: 0px 19px 0px 19px;
@@ -38,7 +41,7 @@ img{
   align-items: center;
   cursor: pointer;
   border: 1px solid hsla(var(--r-primary), 0);
-  
+   
   &:hover {
     background-color: hsla(var(--r-primary), 0.1);
   }
@@ -48,10 +51,38 @@ img{
   }
 
   &.small{
-    padding: 0px 5px 0px 5px;
+    padding: 0px 10px 0px 10px;
+   
     min-height: 34px;
   }
+
+  &.bg{
+    
+    background-color: hsla(var(--r-primary), 0.1);
+  
+    &:hover {
+      background-color: hsla(var(--r-primary), 0.2);
+    }
+  
+    &:focus{
+      background-color: hsla(var(--r-primary), 0.2);
+    }
+  
+  }
 }
+
+/* .defaultButton &.bg{
+  background-color: hsla(var(--r-primary), 0.1) !important;
+
+  &:hover {
+    background-color: hsla(var(--r-primary), 0.1);
+  }
+
+  &:focus{
+    background-color: hsla(var(--r-primary), 0.1);
+  }
+
+} */
 
 .iconButton {
   transition: 0.1s;
@@ -76,8 +107,6 @@ img{
   }
 
 }
-
-
 
 .tinyButton {
   transition: 0.1s;
@@ -129,6 +158,18 @@ img{
   padding: 0px 9px 0px 9px;
 }
 
+.nostretch{
+  align-items: flex-start
+}
+
+.nostretchSelf{
+  align-self: flex-start
+}
+
+.unclickable, .disable{
+  pointer-events: none;
+}
+
 :disabled{
   color: hsla(var(--r-surface-contrast), 0.4);
   cursor: default !important;
@@ -156,6 +197,14 @@ a{
       color: hsla(var(--r-primary), 1);
       background-color: hsla(var(--r-primary), 0.1);
     }
+}
+
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
 }
 
 /* *{
@@ -258,6 +307,14 @@ a{
   margin-left: auto;
 }
 
+.marginTopAuto {
+  margin-top: auto;
+}
+
+.justifySelfEnd{
+  justify-self: end;
+}
+
 .fullHeight {
   height: 100%;
 }
@@ -273,9 +330,8 @@ a{
 }
 
 .grid{
-  width: 1000px;
   display:grid;
-  gap: 1rem;
+  gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
 }
 
@@ -454,7 +510,6 @@ html {
 }
 
 .shadowSmall{
-  
   /* &:focus{
     box-shadow: 4px 4px 7px var(--shadow);
   }
@@ -468,10 +523,12 @@ form{
   &:invalid{
     [type=submit]{
       cursor: not-allowed;
-      color: hsla(from var(--error) h s l / 1);
+      pointer-events: none;
+      /* color: hsla(from var(--error) h s l / 1); */
       &:hover{
         background-color: hsla(from red h s l / 0.1);
       }
+      opacity: 0.5;
     }
   }
 
@@ -494,8 +551,10 @@ form{
     background-color: hsla(var(--r-primary), 0.1);
     
     &:invalid{
-      /* background-color: hsla(var(--r-error), 0.1); */
+      /* color: hsla(from red h s l / 0.1); */
     }
+
+
     
     /* &:hover {
       box-shadow: 4px 4px 7px var(--shadow);
@@ -521,11 +580,17 @@ form{
       opacity: 0;
     }
 
-    &:valid ~ label{
-      /* color: var(--good) */
-    }
+    
+    /* &:valid ~ label{
+
+    } */
   }
 }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 .flexStart{

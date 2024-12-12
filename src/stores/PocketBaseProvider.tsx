@@ -1,5 +1,6 @@
 import PocketBase from 'pocketbase';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { notify } from '../components/Toast';
 
 const url = 'https://haproco.pockethost.io/'
 export const pb = new PocketBase(url)
@@ -49,13 +50,18 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)
+                    notify({title: `User registered, signing in...` , color: "var(--good)", duration: 6000})
                     return true
-                })
-                .catch((e)=>{
+                }).catch((e)=>{
+                    console.log(e)
                     setIsError(e)
+                    setIsLoading(false)
+                    notify({title: `Couldn't register user.` , color: "var(--danger)", message: e.toString(), duration: 10000, dismissible: true })
                     return false
                     }
-                )
+                ).then(()=>{
+                    signIn({username, password})
+                })
         },[])
 
         const signIn = useCallback(async({username, password}:ILoginForm)=>{
@@ -67,6 +73,7 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)
+                    notify({title: `Signed in. Welcome, ${username}` , color: "var(--good)", duration: 6000})
                     return true
                 }).catch(()=>{
                     setIsLoading(true)
@@ -83,11 +90,13 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
                 .then(()=>{
                     setUser(pb.authStore.model)
                     setIsLoading(false)
+                    notify({title: `Signed in. Welcome, ${username}` , color: "var(--good)", duration: 6000})
                     return true
                 })
                 .catch((e)=>{
                     setIsError(e)
                     setIsLoading(false)
+                    notify({title: `Couldn't sign in user.` , color: "var(--danger)", message: e.toString(), duration: 10000, dismissible: true})
                     return false
                 })
                 
@@ -95,6 +104,7 @@ export const PocketBaseProvider = ({children}:{children?: React.ReactNode}) =>{
 
         const signOut = useCallback(()=>{
             pb.authStore.clear()
+            notify({title: `Signed out.` , color: "var(--good)", duration: 6000})
         },[])
 
     return <PocketContext.Provider value={{registerUser, signIn, signOut, adminSignIn, isError, isLoading, user, pb, isSignedIn: pb.authStore.isValid, isAdmin: pb.authStore.isAdmin}}>

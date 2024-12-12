@@ -4,7 +4,6 @@ import { width } from "../App"
 import { useQuery } from "@tanstack/react-query"
 import { getAllWeatherForecasts } from "../queries/WeatherForecast"
 import { testTableQuery } from "../queries/TestTable"
-
 export const SandBoxPage = ({
     children
 }: {
@@ -16,6 +15,7 @@ export const SandBoxPage = ({
     const { data, error } = useQuery({ queryKey: ['allWeatherForecasts'], queryFn: getAllWeatherForecasts })
     const { testTableData, testTableIsLoading, testTableError } = testTableQuery()
 
+    // console.log(data)
     return <div className={cx(
         css.mainPage,
         width < 600 && css.mobile,

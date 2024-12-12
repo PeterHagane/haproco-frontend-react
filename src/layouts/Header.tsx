@@ -22,7 +22,7 @@ export const sections = {
 
 export const menuOptions = [
   { name: "Home", to: "/", requiresAuth: true, id: sections.home.id },
-  { name: "Dashboard", to: "/dashboard",  requiresAuth: true, id: sections.dashboard.id }
+  { name: "Dashboard", to: "/dashboard", requiresAuth: true, id: sections.dashboard.id }
 ];
 
 export const Header = ({
@@ -51,17 +51,19 @@ export const Header = ({
     }
   }
 
-  return <div>
-    <div
+  return  <div 
       className={cx(
         width > 600 && css.fullWidth,
         css.headerContainer,
         "flex", "center",
       )}
     >
+      <div className={cx("flex row marginRightAuto")}>
+        <img className={"padding-m"} onClick={()=>{navigate({ to: "/" })}} src="/logo.svg"></img>
+      </div>
       <div className={cx("flex row marginLeftAuto")}>
         {menuOptions.map((o, i) => {
-          if(o.requiresAuth && !isSignedIn)return
+          if (o.requiresAuth && !isSignedIn) return
 
           return <button
             onClick={(e) => {
@@ -80,7 +82,7 @@ export const Header = ({
           </button>}
 
         <button className={cx("buttonise padding height-50")}
-          onClick={ (e) => {
+          onClick={(e) => {
             let t = handleSetTheme(theme === "dark" ? "light" : "dark")
             notify(notifyProps(t))
             changeStyle(e.currentTarget as HTMLElement, "bounceSVG", 200)
@@ -113,12 +115,13 @@ export const Header = ({
           onClick={(e) => changeStyle(e.currentTarget as HTMLElement, "bounceChild", 200)}
           iconButtonClassName={"buttonise padding"}
           icon={<User size={20} />}>
-            {/* <DropdownMenu.Item> */}
+          {/* <DropdownMenu.Item> */}
+          <div className="padding-s">
+            <Login>
+            </Login>
+          </div>
+          {/* </DropdownMenu.Item> */}
 
-              <Login>
-              </Login>
-            {/* </DropdownMenu.Item> */}
-            
           {/* {
             userButtonOptions.map((option, i) => {
             return (<DropdownMenu.Item
@@ -139,11 +142,11 @@ export const Header = ({
           })} */}
 
         </Dropdown>
-        
+
       </div>
       {children}
     </div>
-  </div>
+
 }
 // const userButtonOptions = [
 //   {label: "signin", func: ()=> console.log("signin!"), el:

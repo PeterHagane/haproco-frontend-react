@@ -14,15 +14,14 @@ export const LoginPage = ({
 }) => {
     const { isSignedIn, user } = usePocket()
 
-    return <>
-    <div className={cx(css.loginPage, "flex column")}>
-        {!loginMessage && !isSignedIn && <h1 className="padding-5">Sign in</h1>}
-        {!loginMessage && isSignedIn && <h1 className="padding-5">Hello, {user?.username}</h1>}
+    return <div className={cx(css.loginPage, "flex column justifyContentCenter fullHeight")}>
+        {!loginMessage && !isSignedIn && <h1 className="">Sign in</h1>}
+        {!loginMessage && isSignedIn && <h1 className="">Hello, {user?.username || user?.email} </h1>}
         {loginMessage && <h3 className="padding-5">{loginMessage}</h3>}
         <Login></Login>
         {children}
     </div>
-    </>
+
 }
 
 export default LoginPage

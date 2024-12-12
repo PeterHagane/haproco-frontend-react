@@ -1,0 +1,11 @@
+.ticket{
+    padding: 10px;
+    border-radius: 5px;
+    // background-color: rgb(196, 197, 255);
+    background-color: var(--primary);
+    >*{color: var(--text-contrast);}
+}
+
+.tickets{
+    gap: 10px;
+}

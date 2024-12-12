@@ -1,11 +1,17 @@
 .pageLayout{
-    padding-top: 48px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    // margin-top: 100px;
+    // padding-top: 60px;
+
     box-sizing: border-box;
     height: 100dvh;
+    width: 100dvw;
 
     // display: flex;
     // align-items: center;
     // justify-content: center;
+    >:nth-child(2){
+        // margin-top: -50px;
+        // padding-left: 1rem;
+        // padding-right: 1rem;
+    }
 }

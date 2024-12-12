@@ -1,0 +1,21 @@
+.chat{
+    padding: 15px;
+    height: calc(100% - 15px);
+    gap: 5px;
+}
+
+.message{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.you{
+    background-color: var(--primary);
+    margin-left: auto;
+    color: var(--text-contrast);
+}
+
+.other{
+    background-color: var(--surface-300);
+    margin-right: auto;
+}

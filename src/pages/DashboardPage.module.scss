@@ -1,0 +1,13 @@
+.dashboardPage{
+    // margin-top: 50dvh;
+    // margin-bottom: 50%;
+    width: calc(100% - 2rem);
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+*:has(>.dashboardPage){
+    align-items: center;
+    // justify-content: center;
+}
